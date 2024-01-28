@@ -911,8 +911,8 @@ const deleteImageByKey = (req, res) => {
 const AWS = require('aws-sdk');
 
 AWS.config.update({
-    accessKeyId: 'AKIA3NCJVRSPV266SVXX',
-    secretAccessKey: 'YNfSR35y0YHQyut+YMyjnWPC8OLIb39kF0mlwNn7'
+    accessKeyId: 'your accessKeyId',
+    secretAccessKey: 'your secretAccessKey'
     });
 
     const s3 = new AWS.S3();

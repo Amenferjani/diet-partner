@@ -1,19 +1,13 @@
 const mysql = require('mysql2');
 
 // const connection = mysql.createConnection({
-//   host: 'db-diet-partner.c28qqizrcou2.eu-north-1.rds.amazonaws.com',
+//   host: 'amazon host',
 //   user: 'admin',
-//   password: 'GAMRATITAaviron123456#',
+//   password: 'your password',
 //   database: 'diet_partner',
 //   port: 3306, 
 //   ssl: 'Amazon RDS'
 // });
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'diet-partner',
-});
 
 // Test the connection
 connection.connect((err) => {
