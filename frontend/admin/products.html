@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        .product-card{
+            width: 300px;
+            height: 370px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img{
+            height :210px ;
+            width: 250px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <section class="text-center" id="products">
+        <h1 class="mt-4">Products</h1>
+            <h4 class="pt-5">Create Product</h4>
+            <form id="createProductForm">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" required>
+            <label for="productPrice">Product Price:</label>
+            <input type="number" step="1" id="productPrice" required>
+            <label for="productStatus">Product Status:</label>
+            <select id="productStatus" required>
+                <option value="In Stock">In Stock</option>
+                <option value="Out of Stock">Out of Stock</option>
+            </select><br><br>
+        
+            <label for="productDiscount">Product Discount:</label>
+            <input type="number" step="1" id="productDiscount">
+        
+            <label for="productCategory">Product Category:</label>
+            <select id="productCategory" required>
+            </select>
+            
+            <label for="productPack">Product Pack:</label>
+            <select id="productPack">
+                <option value="null">None</option>
+            </select><br><br>
+            <input type="file" id="img-file" name="image" accept="image/*">
+                <select id="img-type" name="imageType">
+                    <option value="png">png</option>
+                    <option value="jpeg">jpeg</option>
+                    <option value="jpg">jpg</option>
+                    <option value="gif">gif</option>
+                </select>
+                <br>
+            <label for="productDescription">Product Description:</label><br>
+            <textarea id="productDescription" cols="50" rows="3"></textarea><br>
+            
+            <button class="btn btn-primary" type="submit">Create Product</button>
+    </form>
+    
+    <div>
+        <!-- Get Product by Name Form -->
+        <div>
+            <h4 class="mt-5">Get Product by Name</h4>
+            <form id="getProductByNameForm">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productNameInput" name="productName" required>
+                <button class="btn btn-primary" type="submit">Get Product</button>
+            </form>
+        </div>
+        <ul id="productList"></ul>
+    </div>
+    </section>
+</body>
+<script src="../js/api/products.js"></script>
+</html>

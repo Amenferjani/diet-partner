@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="text-center">
+        <h1 class="mt-4 d-block ">Orders</h1>
+    </div>
+    <section class="d-flex text_center justify-content-around" id="orders">
+    
+        <!-- Get Order by Reference Form -->
+        <div class="mt-5">
+            <h4 class="pt-5">Get Order by Reference</h4>
+            <form id="getOrderForm">
+                <label for="orderReferenceToGet">Order Reference:</label>
+                <input type="text" id="orderReferenceToGet" name="orderReference" required>
+                <button class="btn btn-primary"  type="submit">Get Order</button>
+            </form>
+        </div>
+        <div class="mt-5">
+            <h4 class="pt-5">Delete Order by Reference</h4>
+            <form id="deleteOrderForm">
+                <label for="orderReferenceToDelete">Order Reference:</label>
+                <input type="text" id="orderReferenceToDelete" name="orderReferenceToDelete" required>
+                <button class="btn btn-primary"  type="submit">Delete Order</button>
+            </form>
+        </div>
+    </section>
+    <hr>
+    <div class="justify-content-around d-flex">
+        <ul class="text-center" id="searchOrdersList">
+            <h5>research result :</h5>
+        </ul>
+        
+        <ul class="text-center" id="ordersList">
+            <h5>orders list :</h5>
+        </ul>
+    </div>
+</body>
+<script src="../js/api/orders.js"></script>
+</html>

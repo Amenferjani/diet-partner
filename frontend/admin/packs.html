@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+    <style>
+        .pack-card{
+            width: 300px;
+            height: 370px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        img{
+            height :210px ;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <section class="text-center" id="packs">
+        <h2 class="text-center mt-4">Packs</h2>
+        <div>
+            <h5 class="pt-5">Create New Pack : </h5>
+            <form class="mt-2" id="createPackForm">
+                <label for="newPackName">Pack Name:</label>
+                <input type="text" id="newPackName" name="newPackName" required>
+                <label for="newPackPrice">Pack Price:</label>
+                <input type="number" step="1" id="newPackPrice" name="newPackPrice" required>
+                <label for="newPackDiscount">Pack Discount:</label>
+                <input type="number" step="1" id="newPackDiscount" name="newPackDiscount" required>
+                <br>
+                <input type="file" id="img-file" name="image" accept="image/*">
+                <select id="img-type" name="imageType">
+                    <option value="png">png</option>
+                    <option value="jpeg">jpeg</option>
+                    <option value="jpg">jpg</option>
+                    <option value="gif">gif</option>
+                </select>
+                <br>
+                <button class="btn btn-primary mt-3" type="submit">Create Pack</button>
+            </form>
+        <!-- Get Pack by Name Form -->
+        <div>
+            <h5 class="mt-5">Get Pack by Name :</h5>
+            <form id="getPackByNameForm">
+                <label for="packName">Pack Name:</label>
+                <input type="text" id="packName" name="packName" required>
+                <button class="btn btn-primary" type="submit">Get Pack</button>
+            </form>
+        </div>
+        <ul class="mt-5" id="packList"></ul>
+        <!-- <img src="https://diet-partner-images.s3.amazonaws.com/pack-image-13.png"> -->
+</body>
+<script type="module" src="../js/api/packs.js"></script>
+</html>

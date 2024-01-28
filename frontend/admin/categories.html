@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <section class="text-center" id="categories">
+        <h2 class="text-center mt-5">Categories</h2>
+
+        <!-- Create Category Form -->
+        <div>
+            <h4 class="pt-5">Create Category</h4>
+            <form id="createCategoryForm" enctype="multipart/form-data">
+                <label for="categoryName">Category Name:</label>
+                <input type="text" id="categoryName" name="categoryName" required>
+                <br>
+                <br>
+                <label for="imageFile">Category Image:</label>
+                <input type="file" id="imageFile" name="image" accept="image/*" required>
+                <select id="imgType" name="imageType">
+                    <option value="png">png</option>
+                    <option value="jpeg">jpeg</option>
+                    <option value="jpg">jpg</option>
+                    <option value="gif">gif</option>
+                </select>
+                <br>
+                <br>
+                <button class="btn btn-primary" type="submit">Create Category</button>
+            </form>
+        </div>
+    </section>
+</body>
+<script src="../js/api/categories.js"></script>
+</html>

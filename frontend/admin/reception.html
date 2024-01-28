@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <section class="text-center" id="categories">
+        <h2 class="text-center mt-5">acceuil</h2>
+
+        <!-- Create Category Form -->
+        <div>
+            <h4 class="pt-5">upload image</h4>
+            <form id="uploadImageForm" enctype="multipart/form-data">
+                <br>
+                <label for="imageFile">Category Image:</label>
+                <input type="file" id="imageFile" name="image" accept="image/*" required>
+                <select id="imgType" name="imageType">
+                    <option value="png">png</option>
+                    <option value="jpeg">jpeg</option>
+                    <option value="jpg">jpg</option>
+                    <option value="gif">gif</option>
+                </select>
+                <br>
+                <br>
+                <button class="btn btn-outline-primary" type="submit">upload image</button>
+            </form>
+        </div>
+        <hr>
+        <div class="justify-content-center ">
+            <div class="text-center">
+                <h4>choose image for reception</h4>
+                <div id="chooseImageForm">
+
+                    <label class="mt-2" for="imageUrlInput">image key:</label>
+                    <input type="text" id="imageUrlInput">
+                    <button id="change-display" type="button" class="btn btn-outline-primary ">add to reception</button>
+                </div>
+            </div>
+            <hr>
+            <div class=" text-center row" id="container">
+                
+            </div>
+        </div>
+    </section>
+</body>
+<script src="../js/api/reception.js"></script>
+</html>

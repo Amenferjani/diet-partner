@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Light gray background */
+        }
+
+        .confirmation-box {
+            background-color: #3498db; /* Blue color */
+            color: #ffffff; /* White text */
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h1>Order Sent Successfully!</h1>
+        <p>Thank you for your order. We have received it.</p>
+        <h3 id="reference"></h3>
+    </div>
+</body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const reference = urlParams.get("reference");
+    const h3 = document.getElementById("reference");
+    h3.textContent=`your order reference is ${reference}`
+</script>
+</html>

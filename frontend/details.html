@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <!-- basic -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- mobile metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <!-- site metas -->
+        <title>diet partner</title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- style css -->
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Responsive-->
+        <link rel="stylesheet" href="css/responsive.css">
+        <!-- fevicon -->
+        <link rel="icon" href="images/fevicon.png" type="image/gif" />
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+        <!-- Tweaks for older IEs-->
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <!-- owl stylesheets --> 
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>diet_partner</title>
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="css/details.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<style>
+
+#basket-icon-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+#basket-icon {
+    cursor: pointer;
+}
+
+#basket-item-count {
+  cursor: pointer;
+  position: absolute;
+  top: 7px; 
+  right: -6px;
+  color: rgb(162, 0, 0);
+  border-radius: 50%; 
+  padding: 4px 8px; 
+  font-size: 15px; 
+  font-weight: bold; 
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<body class="main-layout">
+	<!-- header section start -->
+	<div class="header_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="logo"><a href="index.html"><img src="images/logo1.png"></a></div>
+				</div>
+				<div class="col-sm-9">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="index.html">Acceuil</a>
+                            <a class="nav-item nav-link" href="categorie.html">Catégories</a>
+                            <a class="nav-item nav-link" href="pack.html">Pack & Promotions</a>
+                            <a class="nav-item nav-link" href="all.html">Tout Les Produits</a>
+                            <a class="nav-item nav-link last" href="search.html"><img src="images/search_icon.png"></a>
+                            <!-- <a class="nav-item nav-link last" href="panier.html"><img src="images/shop_icon.png"></a> -->
+                            <div class="nav-item nav-link last" id="basket-icon-container">
+                              <a id="basket-icon" href="panier.html"><img src="images/shop_icon.png"></a>
+                              <a href="panier.html"><span id="basket-item-count"></span></a>
+                            </div>
+                        </div>
+                        <!-- HTML for the basket icon -->
+                          
+
+
+                    </div>
+                    </nav>
+                </div>
+              </div>
+            </div>
+  <main>
+    <article>
+      <section class="section product" aria-label="product">
+        <div class="container">
+          <div class="product-slides">
+            <div class="slider-banner" data-slider>
+              <figure class="product-banner">
+                <img  width="100" height="200" loading="lazy" 
+                  class="img-cover">
+              </figure>
+            </div>
+
+          </div>
+
+          <div class="product-content">
+
+            <p class="product-subtitle"></p>
+
+            <h1 class="h1 product-title"></h1>
+
+            <p class="product-text">
+            </p>
+
+            <div class="wrapper">
+
+              <span class="price" data-total-price></span>
+
+              <span class="badge"></span>
+
+              <del class="del"></del>
+
+            </div>
+
+            <div class="btn-group">
+
+              <div class="counter-wrapper">
+
+  
+                </button>
+              
+            </div >
+              
+              <button  id="add-to-basket-button" class="cart-btn  ">
+                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+
+                <span id="add-to-basket" class="span">Ajouter Au Panier</span>
+              </button>
+            </div>
+            
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+<script src="./js/scripts/details.js"></script>
+<script src="./js/scripts/basket.js"></script>
+</html>

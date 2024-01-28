@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<style>
+    form{
+        margin-top: 13rem;
+    }
+    input{
+        width: 20rem;
+    }
+</style>
+
+<form class=" text-center" id="loginForm">
+    <label class="d-block" for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+  
+    <label class="d-block for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    
+    <br>
+    <button class="btn btn-primary mt-2" type="submit">Login</button>
+    
+  </form>
+  <script src="../js/api/login.js"></script>

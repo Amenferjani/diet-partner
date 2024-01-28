@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>diet partner</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- owl stylesheets --> 
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <style>
+
+    #basket-icon-container {
+        position: relative;
+        display: inline-block;
+    }
+    
+    
+    #basket-icon {
+        cursor: pointer;
+    }
+    
+    #basket-item-count {
+      cursor: pointer;
+      position: absolute;
+      top: 7px; 
+      right: -6px;
+      color: rgb(162, 0, 0);
+      border-radius: 50%; 
+      padding: 4px 8px; 
+      font-size: 15px; 
+      font-weight: bold; 
+    }
+    </style>
+   <body class="main-layout">
+	<!-- header section start -->
+	<div class="header_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="logo"><a href="index.html"><img src="images/logo1.png"></a></div>
+				</div>
+				<div class="col-sm-9">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link" href="index.html">Acceuil</a>
+                            <a class="nav-item nav-link" href="categorie.html">Catégories</a>
+                            <a class="nav-item nav-link" href="pack.html">Pack & Promotions</a>
+                            <a class="nav-item nav-link" href="all.html">Tout Les Produits</a>
+                            <a class="nav-item nav-link last" href="search.html"><img src="images/search_icon.png"></a>
+                            <div class="nav-item nav-link last" id="basket-icon-container">
+                                <a id="basket-icon" href="panier.html"><img src="images/shop_icon.png"></a>
+                                <a href="panier.html"><span id="basket-item-count"></span></a>
+                            </div>
+                    </div>
+                    </nav>
+				</div>
+			</div>
+		</div>
+        <div class="collectipn_section_3 layuot_padding">
+            <div id="container" class="container">
+            </div>
+        </div>
+        <div class="section_footer">
+            <div class="container">
+                <div class="mail_section">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-2">
+                            <div><a href="index.html"><img src="images/logo1.png"></a></div>
+                        </div>
+                        <div class="col-sm-6 col-lg-2">
+                            <div class="footer-logo"><img src="images/phone.png">(+216)53676915</div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="social_icon">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/profile.php?id=100083405645820"><img src="images/facebook.png">Diet Partner</a></li>
+                                    <li><a href="https://www.instagram.com/diet_partner.tn/"><img src="images/insta.png">diet_partner.tn</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/scripts/categorie.js"></script>
+    <script src="./js/scripts/basket.js"></script>
+    </html>
