@@ -16,11 +16,9 @@ const tokenizer = new natural.WordTokenizer();
 const createProduct = (req, res) => {
     const { name, description, price, status, discount, categoryId, packId } = req.body;
 
-    // Your SQL INSERT query to create a new product
     const sql = `INSERT INTO Products (name, description, price, status, discount, category_id, pack_id, created_at)
                 VALUES (?, ?, ?, ?, ?, ?, ?, NOW())`;
     
-    // Execute the query and handle the response
     db.query(sql, [name, description, price, status, discount, categoryId, packId], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while creating the product.' });
@@ -31,10 +29,8 @@ const createProduct = (req, res) => {
 };
 const getAllProduct = (req, res) => {
 
-    // Your SQL query to retrieve products with similar names
     const sql = `SELECT * FROM Products  ORDER BY created_at desc`;
     
-    // Execute the query and handle the response
     db.query(sql, (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while fetching the products.' });
@@ -51,23 +47,19 @@ const getLastProducts = (req, res) => {
         LIMIT 3
     `;
     
-    // Execute the query
     db.query(sql, (error, results) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while fetching the products.' });
         }
         
-        // Return the results as JSON
         res.json(results);
     });
 }
 const getProductByName = (req, res) => {
     const searchQuery = req.params.name;
 
-    // Your SQL query to retrieve products with similar names
     const sql = `SELECT * FROM Products WHERE name LIKE ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [`%${searchQuery}%`], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while fetching the products.' });
@@ -113,10 +105,8 @@ const updateProductStatus= (req, res) => {
     const productId = req.params.id;
     const status = req.body.status;
 
-    // Your SQL UPDATE query to update a product
     const sql = `UPDATE Products SET status=? WHERE id=?`;
     
-    // Execute the query and handle the response
     db.query(sql, [status, productId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the product.' });
@@ -128,10 +118,8 @@ const updateProductDiscount= (req, res) => {
     const productId = req.params.id;
     const discount = req.body.discount;
 
-    // Your SQL UPDATE query to update a product
     const sql = `UPDATE Products SET discount=? WHERE id=?`;
     
-    // Execute the query and handle the response
     db.query(sql, [discount, productId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the product.' });
@@ -142,10 +130,8 @@ const updateProductDiscount= (req, res) => {
 const deleteProduct = (req, res) => {
     const productId = req.params.id;
 
-    // Your SQL DELETE query to delete a product
     const sql = `DELETE FROM Products WHERE id=?`;
     
-    // Execute the query and handle the response
     db.query(sql, [productId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while deleting the product.' });
@@ -166,10 +152,8 @@ const deleteProduct = (req, res) => {
 
 const createBasket = (req, res) => {
     const total_amount = 0; 
-    // Your SQL INSERT query to create a new basket
     const sql = `INSERT INTO baskets (created_at, total_amount) VALUES (NOW(), ?)`;
 
-    // Execute the query and handle the response
     db.query(sql, [total_amount], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while creating the basket.' });
@@ -181,10 +165,8 @@ const createBasket = (req, res) => {
 
 const getBasketById = (req, res) => {
     const basketId = req.params.id;
-    // Your SQL query to retrieve a basket by ID
     const sql = `SELECT * FROM baskets WHERE id = ?`;
 
-    // Execute the query and handle the response
     db.query(sql, [basketId], (error, result) => {
         if (error) {
         return res.status(500).json({ error: 'An error occurred while fetching the basket.' });
@@ -199,10 +181,8 @@ const updateBasketTotalAmount = (req, res) => {
     const basketId = req.params.id;
     const newTotalAmount = req.body.newTotalAmount;
 
-    // Your SQL UPDATE query to update the total_amount of the basket
     const sql = `UPDATE baskets SET total_amount = ? WHERE id = ?`;
 
-    // Execute the query and handle the response
     db.query(sql, [newTotalAmount, basketId], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while updating the basket total amount.' });
@@ -212,10 +192,8 @@ const updateBasketTotalAmount = (req, res) => {
 };
 const deleteBasket = (req, res) => {
     const basketId = req.params.id;
-    // Your SQL DELETE query to delete a basket by ID
     const sql = `DELETE FROM baskets WHERE id = ?`;
 
-    // Execute the query and handle the response
     db.query(sql, [basketId], (error, result) => {
         if (error) {
         return res.status(500).json({ error: 'An error occurred while deleting the basket.' });
@@ -241,17 +219,13 @@ const createBasketItem = (req, res) => {
     let packIDToInsert = null;
 
     if (isPack === 1) {
-        // If isPack is 1, set product_id to null and pack_id to the product_id from the request.
         packIDToInsert = product_id;
     } else {
-        // If isPack is 0, set pack_id to null and product_id to the product_id from the request.
         productIDToInsert = product_id;
     }
 
-    // Your SQL INSERT query to create a new basket item
     const sql = `INSERT INTO basketItems (basket_id, product_id, packid, isPack, quantity) VALUES (?, ?, ?, ?, ?)`;
 
-    // Execute the query and handle the response
     db.query(sql, [basket_id, productIDToInsert, packIDToInsert, isPack, quantity], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while creating the basket item.' });
@@ -264,10 +238,8 @@ const createBasketItem = (req, res) => {
 const getBasketItemsById = (req, res) => {
     const basketId = req.params.basketId;
 
-    // Your SQL query to retrieve a basket item by ID
     const sql = `SELECT * FROM basketItems WHERE basket_id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [basketId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while fetching the basket items.' });
@@ -285,10 +257,8 @@ const updateBasketItem = (req, res) => {
     const basketItemId = req.params.id;
     const { quantity } = req.body;
 
-    // Your SQL UPDATE query to update a basket item
     const sql = `UPDATE basketItems SET quantity = ? WHERE id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [quantity, basketItemId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the basket item.' });
@@ -300,10 +270,8 @@ const updateBasketItem = (req, res) => {
 const deleteBasketItem = (req, res) => {
     const basketItemId = req.params.id;
 
-    // Your SQL DELETE query to delete a basket item by ID
     const sql = `DELETE FROM basketItems WHERE id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [basketItemId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while deleting the basket item.' });
@@ -322,7 +290,6 @@ const deleteBasketItem = (req, res) => {
 /****************************************************************************/
     
 
-// Generate random symbols using uppercase alphabet characters
 function generateRandomSymbols(length) {
     
     const uppercaseAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -345,7 +312,6 @@ const createOrder = (req, res) => {
     
     const { basket_id, firstname, lastname, address, city, phone_number } = req.body;
 
-    // Your SQL INSERT query to create a new order
     const createOrderSQL = `INSERT INTO orders (basket_id, firstname, lastname, address, city, phone_number, order_date)
                             VALUES (?, ?, ?, ?, ?, ?, NOW())`;
 
@@ -355,7 +321,6 @@ const createOrder = (req, res) => {
         }
         const generatedReference = generateUniqueReference(result.insertId); // Assuming result.insertId gives the newly inserted order ID
 
-        // Update the order with the generated reference
         const updateReferenceSQL = `UPDATE orders SET reference = ? WHERE id = ?`;
         db.query(updateReferenceSQL, [generatedReference, result.insertId], (updateError) => {
             if (updateError) {
@@ -371,10 +336,8 @@ const createOrder = (req, res) => {
 const getOrderByReference = (req, res) => {
     const orderReference = req.params.reference;
 
-    // Your SQL query to retrieve an order by reference
     const sql = `SELECT * FROM orders WHERE reference = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [orderReference], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while fetching the order.' });
@@ -398,10 +361,8 @@ const getAllOrders = (req,res) => {
 const deleteOrder = (req, res) => {
     const orderReference = req.params.reference;
 
-    // Your SQL DELETE query to delete an order by reference
     const sql = `DELETE FROM orders WHERE reference = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [orderReference], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while deleting the order.' });
@@ -423,10 +384,8 @@ const deleteOrder = (req, res) => {
 const createCategory = (req, res) => {
     const { name } = req.body;
     
-        // Your SQL INSERT query to create a new category
         const sql = `INSERT INTO categories (name) VALUES (?)`;
         
-        // Execute the query and handle the response
         db.query(sql, [name], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while creating the category.',error });
@@ -437,10 +396,8 @@ const createCategory = (req, res) => {
     };
     
     const getAllCategories = (req, res) => {
-        // Your SQL query to retrieve all categories
         const sql = `SELECT * FROM categories`;
         
-        // Execute the query and handle the response
         db.query(sql, (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while fetching the categories.' });
@@ -452,10 +409,8 @@ const createCategory = (req, res) => {
     const getCategoryByName = (req, res) => {
         const categoryName = req.params.name;
     
-        // Your SQL query to retrieve a category by name
         const sql = `SELECT * FROM categories WHERE name = ?`;
         
-        // Execute the query and handle the response
         db.query(sql, [categoryName], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while fetching the category.' });
@@ -470,10 +425,8 @@ const createCategory = (req, res) => {
     const deleteCategory = (req, res) => {
         const categoryName = req.params.name;
     
-        // Your SQL DELETE query to delete a category by name
         const sql = `DELETE FROM categories WHERE name = ?`;
         
-        // Execute the query and handle the response
         db.query(sql, [categoryName], (error, result) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while deleting the category.' });
@@ -495,10 +448,8 @@ const createCategory = (req, res) => {
 const createPack = (req, res) => {
     const { name , price , discount } = req.body;
 
-    // Your SQL INSERT query to create a new pack
     const sql = `INSERT INTO packs (name , price , discount ) VALUES (?,?,?)`;
     
-    // Execute the query and handle the response
     db.query(sql, [name , price , discount ], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while creating the pack.' });
@@ -508,7 +459,6 @@ const createPack = (req, res) => {
     });
 };
 const getLastPacks = (req, res) => {
-    // SQL query to select the last two active packs
     const sql = `
         SELECT * 
         FROM packs 
@@ -517,22 +467,18 @@ const getLastPacks = (req, res) => {
         LIMIT 2
     `;
     
-    // Execute the query
     db.query(sql, (error, results) => {
         if (error) {
             return res.status(500).json({ error: 'An error occurred while fetching the packs.' });
         }
         
-        // Return the results as JSON
         res.json(results);
     });
 };
 
 const getAllPacks = (req, res) => {
-    // Your SQL query to retrieve all packs
     const sql = `SELECT * FROM packs`;
     
-    // Execute the query and handle the response
     db.query(sql, (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while fetching the packs.' });
@@ -556,10 +502,8 @@ const getPackById = (req,res) => {
 const getPackByName = (req, res) => {
     const packName = req.params.name;
 
-    // Your SQL query to retrieve a pack by ID
     const sql = `SELECT * FROM packs WHERE name = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [packName], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while fetching the pack.' });
@@ -575,10 +519,8 @@ const updatePackName = (req, res) => {
     const packId = req.params.id;
     const { name } = req.body;
 
-    // Your SQL UPDATE query to update a pack
     const sql = `UPDATE packs SET name = ? WHERE id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [name, packId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the pack.' });
@@ -590,10 +532,8 @@ const updatePackDiscount = (req, res) => {
     const packId = req.params.id;
     const { discount } = req.body;
 
-    // Your SQL UPDATE query to update a pack
     const sql = `UPDATE packs SET discount = ? WHERE id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [discount, packId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the pack.' });
@@ -605,10 +545,8 @@ const updatePackStatus = (req, res) => {
     const packId = req.params.id;
     const { status } = req.body;
 
-    // Your SQL UPDATE query to update a pack
     const sql = `UPDATE packs SET status = ? WHERE id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [status, packId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the pack.' });
@@ -620,10 +558,8 @@ const updatePackStatus = (req, res) => {
 const deletePack = (req, res) => {
     const packId = req.params.id;
 
-    // Your SQL DELETE query to delete a pack by ID
     const sql = `DELETE FROM packs WHERE id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [packId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while deleting the pack.' });
@@ -649,10 +585,8 @@ const deletePack = (req, res) => {
 const createProductImage = (req, res) => {
     const { product_id ,imageUrl } = req.body;
 
-    // Your SQL INSERT query to create a new product image
     const sql = `INSERT INTO productImages (product_id, url) VALUES (?, ?)`;
     
-    // Execute the query and handle the response
     db.query(sql, [product_id, imageUrl], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while creating the product image.' });
@@ -664,10 +598,8 @@ const createProductImage = (req, res) => {
 const getProductImageByProductId = (req, res) => {
     const productId = req.params.productId ;
 
-    // Your SQL query to retrieve a product image by ID
     const sql = `SELECT * FROM productImages WHERE product_id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [productId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while fetching the product image.' });
@@ -682,10 +614,8 @@ const updateProductUrlImage = (req, res) => {
     const productId = req.params.productId;
     const  imageUrl = req.body.url;
 
-    // Your SQL UPDATE query to update a pack
     const sql = `UPDATE productImages SET url = ? WHERE product_id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [imageUrl, productId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the product image.' });
@@ -696,10 +626,8 @@ const updateProductUrlImage = (req, res) => {
 const deleteProductImageByProductId = (req, res) => {
     const productId = req.params.productId;
 
-    // Your SQL DELETE query to delete a product image by ID
     const sql = `DELETE FROM productImages WHERE productId = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [productId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while deleting the product image.' });
@@ -717,10 +645,8 @@ const deleteProductImageByProductId = (req, res) => {
 const createPackImage = (req, res) => {
     const { pack_id ,imageUrl  } = req.body;
 
-    // Your SQL INSERT query to create a new pack image
     const sql = `INSERT INTO packImages (pack_id, url) VALUES (?, ?)`;
     
-    // Execute the query and handle the response
     db.query(sql, [pack_id, imageUrl], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while creating the pack image.' });
@@ -732,10 +658,8 @@ const createPackImage = (req, res) => {
 const getPackImageByPackId = (req, res) => {
     const packId = req.params.packId;
 
-    // Your SQL query to retrieve a pack image by ID
     const sql = `SELECT * FROM packImages WHERE pack_id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [packId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while fetching the pack image.' });
@@ -750,10 +674,8 @@ const updatePackUrlImage = (req, res) => {
     const packId = req.params.packId;
     const { imageUrl } = req.body.url;
 
-    // Your SQL UPDATE query to update a pack
     const sql = `UPDATE packImages SET url = ? WHERE pack_id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [imageUrl, packId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while updating the product image.' });
@@ -764,10 +686,8 @@ const updatePackUrlImage = (req, res) => {
 const deletePackImage = (req, res) => {
     const packId = req.params.pack_id;
 
-    // Your SQL DELETE query to delete a pack image by ID
     const sql = `DELETE FROM packImages WHERE pack_id = ?`;
     
-    // Execute the query and handle the response
     db.query(sql, [packId], (error, result) => {
     if (error) {
         return res.status(500).json({ error: 'An error occurred while deleting the pack image.' });
@@ -781,8 +701,7 @@ const deletePackImage = (req, res) => {
 /*                                                                           */
 
 const createCategoryImage = (req, res) => {
-    const { category_id,url } = req.body; // Assuming you send category_id and url in the request body
-    // Insert the new category image into the categoryImages table
+    const { category_id,url } = req.body; 
     const sql = 'INSERT INTO categoryImages (category_id, url) VALUES (?, ?)';
     db.query(sql, [category_id, url], (error, result) => {
         if (error) {
@@ -838,19 +757,15 @@ const getAllImagesUrl = (req,res) => {
 const updateReceptionImageDisplay = (req, res) => {
     const key = req.params.key;
     console.log(key)
-    // Set all display values to 0
     const sqlResetAll = "UPDATE receptionImage SET display = 0";
     
-    // Update a specific item's display value to 1 based on the key from req.body
     const sqlUpdateOne = "UPDATE receptionImage SET display = 1 WHERE url = ?";
     
-    // Begin a transaction to ensure atomicity
     db.beginTransaction((error) => {
     if (error) {
         return res.status(500).json({ error: 'Error beginning transaction', error });
     }
 
-    // First, reset all display values to 0
     db.query(sqlResetAll, (error) => {
         if (error) {
         return db.rollback(() => {
@@ -858,7 +773,6 @@ const updateReceptionImageDisplay = (req, res) => {
         });
         }
 
-        // Then, update the specific item's display value to 1
         db.query(sqlUpdateOne, [key], (error) => {
         if (error) {
             return db.rollback(() => {
@@ -866,7 +780,6 @@ const updateReceptionImageDisplay = (req, res) => {
             });
         }
 
-        // Commit the transaction
         db.commit((error) => {
             if (error) {
             return db.rollback(() => {
@@ -906,7 +819,6 @@ const deleteImageByKey = (req, res) => {
 /*                                                                           */
 //!                            AWS S3-IMAGES CONTROLLER                     !//
 /*                                                                           */
-// controllers/imageController.js
 
 const AWS = require('aws-sdk');
 
@@ -919,11 +831,11 @@ AWS.config.update({
 
     const uploadImageToS3 = (req, res) => {
         const imageKey = req.params.key;
-        const imageFile = req.file.buffer; // Use req.file to access the uploaded image data
-        console.log('Received request:', req.body); // Log the entire request body
+        const imageFile = req.file.buffer; 
+        console.log('Received request:', req.body); 
         console.log('Received file:', req.file);
         console.log('Image Key:', imageKey);
-        console.log('Image Buffer Length:', imageFile.length); // Corrected to access buffer length
+        console.log('Image Buffer Length:', imageFile.length); 
         const params = {
             Bucket: 'diet-partner-images',
             Key: imageKey,
@@ -936,7 +848,7 @@ AWS.config.update({
                 res.status(500).json({ error: 'Image upload failed' });
             } else {
                 console.log('Image uploaded successfully:', data);
-                res.json({ message: 'ok', buffer: imageFile }); // Corrected to include buffer
+                res.json({ message: 'ok', buffer: imageFile }); 
             }
         });
     };
