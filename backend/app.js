@@ -2,16 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const multer = require ('multer')
-const jwt = require('jsonwebtoken'); // Import JWT library
+const jwt = require('jsonwebtoken'); 
 const path = require('path'); 
 
 
 const app = express();
 
-app.use(cors({ origin: '*' })); // Apply the CORS middleware
+app.use(cors({ origin: '*' })); 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); // Parse both JSON and URL-encoded requests
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // const storage = multer.diskStorage({
 //   destination: (req, file, cb) => {
@@ -26,7 +26,6 @@ const upload = multer({
   storage:  multer.memoryStorage(),
 });
 
-// Define your routes here
 const basketItemsRoutes = require('./routes/basketItems');
 const basketsRoutes = require('./routes/baskets');
 const categoriesRoutes = require('./routes/categories');
